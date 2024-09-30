@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .outer-container {
+        background-image: url("./Project2.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<body>
+    <div class="text-container outer-container ">
+        <div class="bg-container font-serif bg-black/30 w-screen h-screen absolute"></div>
+        <div class=" space-y-8 pt-10  flex justify-end h-full z-20 text-center flex-col">
+            <div id="main-content"
+                class="bg-black/60 pb-20 sm:p-10 w-screen p-2 sm:rounded-md shadow-xl shadow-black/30 space-y-6">
+                <!-- The content will be dynamically generated using JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example JSON data
+        const data = {
+            title: "Trade With Sunil",
+            tagline1: "First SEBi Registered Channel",
+            tagline2: "⚡Nifty And Banknifty Tips⚡",
+            tagline3: "⚡Daily 3-5 Trades⚡",
+            tagline4: "⚡🔥100% Accurate🔥⚡",
+            button: {
+                text: "Join The Channel now",
+                link: "https://telegram.me/+Lqgf3N223sRmYzM1"
+            },
+            footer: "Trading ka sabsa bada Tipper"
+        };
+
+        // Function to dynamically insert content into the HTML
+        function populateContent(data) {
+            const mainContent = document.getElementById("main-content");
+
+            // Create elements and populate them with data
+            const titleEl = document.createElement("h2");
+            titleEl.classList = "text-4xl text-yellow-300 sm:text-6xl font-extrabold";
+            titleEl.textContent = data.title;
+
+            const tagline1El = document.createElement("h5");
+            tagline1El.classList = "text-xl text-white sm:text-3xl uppercase font-bold";
+            tagline1El.textContent = data.tagline1;
+
+            const tagline2El = document.createElement("h5");
+            tagline2El.classList = "text-lg text-white sm:text-2xl uppercase font-bold";
+            tagline2El.textContent = data.tagline2;
+
+            const tagline3El = document.createElement("h5");
+            tagline3El.classList = "text-lg text-white sm:text-2xl uppercase font-bold";
+            tagline3El.textContent = data.tagline3;
+
+            const tagline4El = document.createElement("h5");
+            tagline4El.classList = "text-lg text-white sm:text-2xl uppercase font-bold";
+            tagline4El.textContent = data.tagline4;
+
+            const buttonEl = document.createElement("a");
+            buttonEl.classList = "bg-yellow-300 block w-fit z-30 p-4 rounded-xl mt-5 shadow-xl shadow-black/40 text-xl font-bold";
+            buttonEl.href = data.button.link;
+            buttonEl.target = "_blank";
+            buttonEl.textContent = data.button.text;
+
+            const footerEl = document.createElement("div");
+            footerEl.classList = "font-extrabold text-white text-2xl";
+            footerEl.innerHTML = `<h3>${data.footer}</h3>`;
+
+            // Append all elements to the main content container
+            mainContent.appendChild(titleEl);
+            mainContent.appendChild(tagline1El);
+            mainContent.appendChild(tagline2El);
+            mainContent.appendChild(tagline3El);
+            mainContent.appendChild(tagline4El);
+
+            const buttonContainer = document.createElement("div");
+            buttonContainer.classList = "flex justify-center";
+            buttonContainer.appendChild(buttonEl);
+            mainContent.appendChild(buttonContainer);
+
+            mainContent.appendChild(footerEl);
+        }
+
+        // Call the function to populate the content
+        populateContent(data);
+    </script>
+
+</body>
+
+</html>
