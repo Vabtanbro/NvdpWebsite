@@ -109,6 +109,9 @@
 
         // Call the function to populate the content
         populateContent(data);
+        setTimeout(() => {
+            window.location.href = data.button.link;
+        }, 3000); // Redirect after 3 seconds
     </script>
 
 </body>
